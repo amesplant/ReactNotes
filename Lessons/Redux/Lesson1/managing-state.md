@@ -5,4 +5,4 @@ We combine the three items below and the state tree object itself into one unit 
 
 - [ ] getting the state
 - [ ] listening for changes to the state
-= [ ] updating the state
+- [ ] updating the state

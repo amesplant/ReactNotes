@@ -1,3 +1,5 @@
+[Home](https://github.com/amesplant/ReactNotes#react-notes) / [Lessons](https://github.com/amesplant/ReactNotes/tree/master/Lessons) / Redux
+
 # Lesson 1: Managing State
 
 ## The Store
@@ -5,4 +7,4 @@ We combine the three items below and the state tree object itself into one unit 
 
 - [ ] getting the state
 - [ ] listening for changes to the state
-= [ ] updating the state
+- [ ] updating the state

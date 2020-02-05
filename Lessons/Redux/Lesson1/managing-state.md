@@ -1,4 +1,4 @@
-[Home](https://github.com/amesplant/ReactNotes#react-notes) / Lessons / Redux
+[Home](https://github.com/amesplant/ReactNotes#react-notes) / [Lessons](https://github.com/amesplant/ReactNotes/tree/master/Lessons) / Redux
 
 # Lesson 1: Managing State
 

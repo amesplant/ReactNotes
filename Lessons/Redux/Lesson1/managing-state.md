@@ -1,3 +1,5 @@
+[Home](https://github.com/amesplant/ReactNotes#react-notes) / Lessons / Redux
+
 # Lesson 1: Managing State
 
 ## The Store

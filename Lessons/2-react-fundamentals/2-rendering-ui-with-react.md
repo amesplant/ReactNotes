@@ -1,4 +1,3 @@
-### 2 | React Fundamentals
 # Lesson 2: Rendering UI with React
 
 ## 1. Rendering UI Intro

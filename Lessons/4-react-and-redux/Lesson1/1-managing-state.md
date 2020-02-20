@@ -2,14 +2,14 @@
 
 # Lesson 1: Managing State
 
-## The Store
+## 3. The Store
 We combine the three items below and the state tree object itself into one unit which we call the **store**. 
 
 - [ ] getting the state
 - [ ] listening for changes to the state
 - [ ] updating the state
 
-## Create Store: Getting and Listening
+## 4. Create Store: Getting and Listening
 
 We'll start with a blank `index.js` file and create a factory function that creates store objects. Then we'll have the store keep track of the state, and we'll write the method to get the state from the store.
 
@@ -139,7 +139,7 @@ unsubscribe();
 ````
 
 ### 4. Updating State
-| Rule #1: Only an event can change the state of the store.
+> Rule #1: Only an event can change the state of the store.
 
 When an event takes place in a Redux application, we use a plain JavaScript object to keep track of what the specific event was. This object is called an **Action**.
 ````js
@@ -198,3 +198,34 @@ const removeComments = {
 Both **receivePost** functions are _action creators_, which extrapolate the creation of an action object to a function. 
 **clearErrors** and **addSeven**, on the other hand, are _action objects_ with a valid **type** key and optional payload. 
 **removeComments** does not include a type key and is an invalid action.
+
+
+## 5. Updating State
+The whole goal of Redux is to increase predictability:
+_Redux is a predictable state container for JavaScript apps._
+
+So far our rules for Redux are;
+1 Only an event can change the state of the store.
+2.The function that returns the new state needs to be a pure function.
+
+By definition, **pure functions**:
+- [ ] Return the same result if the same arguments are passed in
+- [ ] Depend solely on the arguments passed into them
+- [ ] Do not produce side effects, such as API requests and I/O operations
+
+
+### Reducer Function 
+Now we need to tie our **state** and our **actions** together, meaning we need to updater our internal state of our store based on the specific action that occurred. 
+
+We will create a pure function to do just that. When a function takes in the current state and the action, and then returns the new state of the action, this is called the **reducer**, which _must_ be a pure function.
+````js
+function todos (state = [], action) { // using ES6 default parameters to set state to [] if state is undefined as it will be the first time
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo]) // concat will return a new array with the new action (todo) added to the state
+  }
+
+  return state
+}
+````
+
+

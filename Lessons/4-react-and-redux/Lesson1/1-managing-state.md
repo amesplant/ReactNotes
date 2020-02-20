@@ -165,7 +165,7 @@ const addItem = item => ({
   item
 });
 ````
-### Quiz
+### Quiz Results
 ````js
 // Valid Action Creator
 const receivePost = post => ({
@@ -194,3 +194,7 @@ const addSeven = {
 const removeComments = {
   comments: null
 };
+````
+Both **receivePost** functions are _action creators_, which extrapolate the creation of an action object to a function. 
+**clearErrors** and **addSeven**, on the other hand, are _action objects_ with a valid **type** key and optional payload. 
+**removeComments** does not include a type key and is an invalid action.

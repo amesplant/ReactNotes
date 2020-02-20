@@ -113,7 +113,7 @@ function createStore() {
     const subscribe = (listener) => { 
         listeners.push(listener);
         return () => {
-            listener = listeners.filter((l) !== listener);
+            listener = listeners.filter((l) l = !== listener);
         }
     }
     
@@ -139,4 +139,58 @@ unsubscribe();
 ````
 
 ### 4. Updating State
-| Only an event can change the state of the store.
+| Rule #1: Only an event can change the state of the store.
+
+When an event takes place in a Redux application, we use a plain JavaScript object to keep track of what the specific event was. This object is called an **Action**.
+````js
+{
+  type: "ADD_PRODUCT_TO_CART"
+}
+````
+What makes this plain JavaScript object special in Redux, is that every Action must have a **type** property. The purpose of the type property is to let our app (Redux) know exactly what event just took place. 
+
+Now, since an Action is just a regular object, we can include extra data about the event that took place:
+````js
+{
+  type: "ADD_PRODUCT_TO_CART",
+  productId: 17
+}
+````
+Pass as little data as possible in each action. That is, prefer passing the index or ID of a product rather than the entire product object itself.
+
+**Action Creators** are functions that _create/return_ action objects. For example:
+````js
+const addItem = item => ({
+  type: ADD_ITEM,
+  item
+});
+````
+### Quiz
+````js
+// Valid Action Creator
+const receivePost = post => ({
+  type: RECEIVE_POST,
+  post
+});
+
+// Valid Action Crator
+const receivePost = post => ({
+  type: RECEIVE_POST,
+  post: post
+}); 
+
+// Valid Action
+const clearErrors = {
+  type: CLEAR_ERRORS
+};
+
+// Valid Action
+const addSeven = {
+  type: 'ADD_NUMBER',
+  number: 7
+};
+
+// Not Valid Action -- missing type
+const removeComments = {
+  comments: null
+};

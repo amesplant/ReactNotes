@@ -113,7 +113,7 @@ function createStore() {
     const subscribe = (listener) => { 
         listeners.push(listener);
         return () => {
-            listener = listeners.filter((l) = l !== listener);
+            listener = listeners.filter((l) !== listener);
         }
     }
     

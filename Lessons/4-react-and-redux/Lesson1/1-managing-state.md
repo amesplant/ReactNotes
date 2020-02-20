@@ -53,7 +53,7 @@ function createStore() {
     }
 }
 
-const store = createState();
+const store = createStoree();
 
 store.subscribe(() => {
     console.log("The new state is: ", store.getState());

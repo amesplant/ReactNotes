@@ -27,7 +27,7 @@ function createStore() {
 
     let state; // 1. set the tate
 
-    const getState = () => state 
+    const getState = () => state;
     
     // 2. returns the state of the application
     return {
@@ -138,7 +138,7 @@ unsubscribe();
 
 ````
 
-### 4. Updating State
+### 4. Create Store: Getting and Listening
 > Rule #1: Only an event can change the state of the store.
 
 When an event takes place in a Redux application, we use a plain JavaScript object to keep track of what the specific event was. This object is called an **Action**.
@@ -221,11 +221,185 @@ We will create a pure function to do just that. When a function takes in the cur
 ````js
 function todos (state = [], action) { // using ES6 default parameters to set state to [] if state is undefined as it will be the first time
   if (action.type === 'ADD_TODO') {
-    return state.concat([action.todo]) // concat will return a new array with the new action (todo) added to the state
+    return state.concat([action.todo]); // concat will return a new array with the new action (todo) added to the state
+  }
+
+  return state;
+}
+````
+
+### Challenge
+````js
+/* Create A Reducer
+ *
+ * You need to create a reducer called "appReducer" that accepts two arguments:
+ * - First, an array containing information about ice cream 
+ * - Second, an object with a 'DELETE_FLAVOR' `type` key
+ * (i.e., the object contains information to delete the flavor from the state)
+ *
+ * The action your reducer will receive will look like this:
+ * { type: 'DELETE_FLAVOR', flavor: 'Vanilla' }
+ *
+ * And the initial state will look something like this (as such, refrain 
+ * from passing in default values for any parameters!):
+ * [{ flavor: 'Chocolate', count: 36 }, { flavor: 'Vanilla', count: 210 }];
+*/
+````
+
+### 3 Parts to our App
+1. Action:  represent the different **events** that will change the state of our store
+2. Reducer Function: a function that takes in the current **state** and an **action** that has occurred and returns the **new state**
+3. Create Store: actually creates the **store**
+    - State Tree
+    - Getting the State
+    - Listening for Changes
+    - Updating the State (dispatch)
+    
+### Dispatch
+responsible for updating the state inside of the store ...
+- It will need the **action** to tell dispatch the specific event that occurred inside of the application.
+- Once it has access to the state and the action that has occurred, it can call our **todos** function passing its state and an action
+````js
+const dispatch = (action) => {
+    state = todos(state, action);
+    // since we just modified state ^^^ we will need to loop through all of our array of listeners and invoke them
+    // so than any lisenter the user set up can be invoked
+    listeners.forEach((listener) => listener());
+}
+ // no that we have our dispatch, it needes to be invoked
+return {
+    getState,
+    subscribe,
+    dispatch
+}
+````
+
+### index.js
+````js
+// Library Code
+function createStore (reducer) { // allows user to pass in a specific reducer function
+  // The store should have four parts
+  // 1. The state
+  // 2. Get the state.
+  // 3. Listen to changes on the state.
+  // 4. Update the state
+
+  let state;
+  let listeners = [];
+
+  const getState = () => state;
+
+  const subscribe = (listener) => {
+    listeners.push(listener)
+    return () => {
+      listeners = listeners.filter((l) => l !== listener);
+    }
+  }
+
+  const dispatch = (action) => {
+    state = reducer(state, action); // changed from 'todos' to using whatever reducer was passed in, since this acts as a 'library'
+    listeners.forEach((listener) => listener());
+  }
+
+  return {
+    getState,
+    subscribe,
+    dispatch,
+  }
+}
+
+// App Code
+function todos (state = [], action) {
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo]);
+  }
+
+  return state;
+}
+
+// now if the user can pass in a specific reducer
+const store = createStore(reducer);
+````
+
+## 6. Putting it All Together
+We've finally finished creating the createStore function!
+- we created a function called `createStore()` that returns a **store** object
+- `createStore()` must be passed a **reducer** function when invoked
+- the **store** object has three methods on it:
+  - .getState() - used to get the current state from the store
+  - .subscribe() - used to provide a listener function the store will call when the state changes
+  - .dispatch() - used to make changes to the store's state
+- the **store** object's _methods_ have access to the state of the store via closure
+
+
+
+
+````js
+// Library Code
+function createStore (reducer) {
+  // The store should have four parts
+  // 1. The state
+  // 2. Get the state.
+  // 3. Listen to changes on the state.
+  // 4. Update the state
+
+  let state
+  let listeners = []
+
+  const getState = () => state
+
+  const subscribe = (listener) => {
+    listeners.push(listener)
+    return () => {
+      listeners = listeners.filter((l) => l !== listener)
+    }
+  }
+
+  const dispatch = (action) => {
+    state = reducer(state, action)
+    listeners.forEach((listener) => listener())
+  }
+
+  return {
+    getState,
+    subscribe,
+    dispatch,
+  }
+}
+
+// App Code
+function todos (state = [], action) {
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo])
   }
 
   return state
 }
+
+const store = createStore(todos);
+// createStore() gives us access to 
+// 1. getState()
+// 2. subscribe()
+// 3. dispatch()
+
+store.subscribe(() => {
+  console.log('The new state is: ', store.getState());
+})
+
+store.dispatch({
+  type: 'ADD_TODO',
+  todo: {
+    id: 0,
+    name: 'Learn Redux',
+    complete: false
+  }
+})
 ````
+
+## 7. Managing More State
+As of right now, our code is handling the `ADD_TODO` action. There are still a couple more actions that our app is supposed to be able to handle:
+- the `REMOVE_TODO` action
+- the `TOGGLE_TODO` action
+
 
 

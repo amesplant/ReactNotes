@@ -401,5 +401,164 @@ As of right now, our code is handling the `ADD_TODO` action. There are still a c
 - the `REMOVE_TODO` action
 - the `TOGGLE_TODO` action
 
+Our todos **reducer** originally looked like the following:
+````js
+function todos (state = [], action) {
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo]);
+  }
 
+  return state;
+}
+````
+To resolve additional action types, we added a few more conditions to our reducer logic:
+````js
+function todos (state = [], action) {
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo]);
+  } else if (action.type === 'REMOVE_TODO') {
+    // ...
+  } else if (action.type === 'TOGGLE_TODO') {
+    // ...
+  } else {
+    return state;
+  }
+}
+````
+
+To remove a todo item, we can call `filter()` on the state. 
+This returns a new state (an array) with only todo items whose `id`'s do not match the `id` of the todo we want to remove.
+````js
+function todos (state = [], action) {
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo]);
+  } else if (action.type === 'REMOVE_TODO') {
+    return state.filter((todo) => todo.id !== action.id);
+  } else if (action.type === 'TOGGLE_TODO') {
+    // ...
+  } else {
+    return state;
+  }
+}
+````
+
+To handle toggling a todo item, we want to change the value of the complete property on whatever `id` is passed along on the action. 
+We cna map over the entire state, and if `todo.id` matches `action.id`, we can use `Object.assign()` to return a new object with merged properties:
+````js
+function todos (state = [], action) {
+  if (action.type === 'ADD_TODO') {
+    return state.concat([action.todo]);
+  } else if (action.type === 'REMOVE_TODO') {
+    return state.filter((todo) => todo.id !== action.id);
+  } else if (action.type === 'TOGGLE_TODO') {
+    return state.map((todo) => todo.id !== action.id ? todo :
+    Object.assign({}, todo, { complete: !todo.complete }));
+  } else {
+    return state;
+  }
+}
+````
+
+Refactoring our entire `todos` reducer to use a `switch` statement rather than multiple `if/else` statements:
+````js
+function todos (state = [], action) {
+  switch(action.type) {
+    case 'ADD_TODO' :
+      return state.concat([action.todo]);
+    case 'REMOVE_TODO' :
+      return state.filter((todo) => todo.id !== action.id);
+    case 'TOGGLE_TODO' :
+      return state.map((todo) => todo.id !== action.id ? todo :
+      Object.assign({}, todo, { complete: !todo.complete }));
+    default :
+      return state;
+  }
+}
+````
+
+### Putting it all together
+````js
+// Library Code
+function createStore (reducer) {
+  // The store should have four parts
+  // 1. The state
+  // 2. Get the state.
+  // 3. Listen to changes on the state.
+  // 4. Update the state
+
+  let state;
+  let listeners = [];
+
+  const getState = () => state;
+
+  const subscribe = (listener) => {
+    listeners.push(listener);
+    return () => {
+      listeners = listeners.filter((l) => l !== listener);
+    }
+  }
+
+  const dispatch = (action) => {
+    state = reducer(state, action);
+    listeners.forEach((listener) => listener());
+  }
+
+  return {
+    getState,
+    subscribe,
+    dispatch,
+  }
+}
+
+// App Code
+function todos (state = [], action) {
+  switch(action.type) {
+    case 'ADD_TODO' :
+      return state.concat([action.todo]);  //concat (does not directly change state)
+    case 'REMOVE_TODO' :
+      return state.filter((todo) => todo.id !== action.id);  // filter (does not directly change state)
+    case 'TOGGLE_TODO' :
+      return state.map((todo) => todo.id !== action.id ? todo :  
+        Object.assign({}, todo, { complete: !todo.complete })) //map (does not directly change state)
+    default :
+      return state;
+  }
+}
+
+const store = createStore(todos)
+
+store.subscribe(() => {
+  console.log('The new state is: ', store.getState());
+})
+
+
+
+store.dispatch({
+  type: 'ADD_TODO',
+  todo: {
+    id: 0,
+    name: 'Learn Redux',
+    complete: false
+  }
+});
+````
+
+### Adding Goals to our App
+Currently, the app keeps track of a single piece of state - a list of todo items.
+Let's make the app a bit more complicated and add in a second piece of state for our app to track - goals.
+
+````js
+function goals (state = [], action) {
+  switch(action.type) {
+    case 'ADD_GOAL' :
+      return state.concat([action.goal])
+    case 'REMOVE_GOAL' :
+      return state.filter((goal) => goal.id !== action.id)
+    default :
+      return state
+  }
+}
+````
+
+We now have two reducers, but our dispatch can only handle one reducer.
 

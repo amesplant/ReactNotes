@@ -20,7 +20,7 @@ The state should have four parts
 3. Listen to changes on the state
 4. Update the state
 
-### 1. Set the state and 2. Get the state
+#### 1. Set the state and 2. Get the state
 
 ````js
 function createStore() {
@@ -36,7 +36,7 @@ function createStore() {
 }
 ````
 
-### 3. Listen to the changes on the state:
+#### 3. Listen to the changes on the state:
 
 It would be nice if we provide to the user a subscribe method, they then could pass subscribe a callback function ... and whenever the state changes internally, we can invoke the callback function ....
 
@@ -138,7 +138,7 @@ unsubscribe();
 
 ````
 
-### 4. Create Store: Getting and Listening
+#### 4. Update the state
 > Rule #1: Only an event can change the state of the store.
 
 When an event takes place in a Redux application, we use a plain JavaScript object to keep track of what the specific event was. This object is called an **Action**.

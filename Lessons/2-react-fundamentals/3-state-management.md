@@ -120,7 +120,7 @@ Next, we will map over our List of Contacts to display them, since currently we 
 ````
 
 ### 6. Functional Components
-If all your comopnent has is a **render** method, use a regular function to create the component.
+If all your component has is a **render** method, use a regular function to create the component.
 
 **Class Component**
 ````js

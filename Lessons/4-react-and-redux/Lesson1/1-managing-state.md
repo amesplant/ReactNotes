@@ -25,7 +25,7 @@ The state should have four parts
 ````js
 function createStore() {
 
-    let state; // 1. set the tate
+    let state; // 1. set the state
 
     const getState = () => state;
     

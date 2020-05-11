@@ -1,172 +1,85 @@
 ## 3. UI + State
 
-Now that we have the supported UI, we now need to be able to allow the users to interact and add a Todo or Goal
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/b9HpVHhDvL4?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=101" id="widget102" width="640" height="360" frameborder="0"></iframe>
 
-Here is the HTML for the Todo and Goal input fields
 
-```html
-<!-- Add Todo Input -->
-<input id='todo' type='text' placeholder='Add Todo' />
-<button id='todoBtn'>Add Todo</button>
 
-<!-- Add Goal Input -->
-<input id='goal' type='text' placeholder='Add Goal' />
-<button id='goalBtn'>Add Goal</button>
+[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/707da3250f13adfef00fdbf032a563135cdf939a)
 
-```
 
-Make two different functions to that are hooked up to the Add todo and Add goal buttons.
+
+The changes we just added made it so whenever the Todo input field is  submitted, it will add a Todo item to the state...and whenever the Goal  input field is submitted, it will add a new Goal item to the state.
+
+Let's break this down into the steps that happen. First, we need to  listen for when the buttons are clicked; we did this with the plain DOM `.addEventListener()` method:
 
 ```js
-// add a function to generate a random id
-function generateId () {
-      return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
-}
+document.getElementById('todoBtn').addEventListener('click', addTodo)
 
-// add functions to process adding a Todo or Goal
-function addTodo() {
-    const input = document.getElementById('todo');
-    const name = input.value;
-    input.value = ''; // reset input value 
-    
-    // dispatch an action to add the todo to the store
-    store.dispatch(addToDoAction({
-        name,
-        complete: false,
-        id: generateId()
-    }))
-}
-
-function addGoal() {
-    const input = document.getElementById('goal');
-    const name = input.value;
-    input.value = '';
-    
-    store.dispatch(addGoalAction({
-        name,
-        complete: false,
-        id: generateId()
-    }))
-}
-
-// add listeners to listen for clicks on the buttons
-document.getElementById('todo').addEventListener('click', addTodo);
-document.getElementById('goal').addEventListener('click', addGoal);
+document.getElementById('goalBtn').addEventListener('click', addGoal)
 ```
 
-
-
-#### Adding Todo and Goal items to our page
-
-Here are is the HTML section, where we are going to add our todos and goals:
-
-```html
-<div>
-    <h1>Todo List</h1>
-    <input id='todo' type='text' placeholder='Add Todo' />
-    <button id='todoBtn'>Add Todo</button>
-    <ul id='todos'></ul>
-  </div>
-  <div>
-    <h1>Goals</h1>
-    <input id='goal' type='text' placeholder='Add Goal' />
-    <button id='goalBtn'>Add Goal</button>
-    <ul id='goals'></ul>
-  </div>
-```
-
-Now we can add Todo and Goal items, so now let's display them on the screen.
+Pressing the `#todoBtn` will call `addTodo` which will add the new item to the state:
 
 ```js
-// add Todo to DOM
-function addTodoToDOM(todo) {
-    const node = document.createElement('li');
-    const text = document.createTextNode(todo.name);
-    node.appendChild(text);
-    document.getElementById('todos').appendChild(node);
-}
+function addTodo () {
+  const input = document.getElementById('todo')
+  const name = input.value
+  input.value = ''
 
-// add Goal to DOM
-function addTodoToDOM(goal) {
-    const node = document.createElement('li');
-    const text = document.createTextNode(goal.name);
-    node.appendChild(text);
-    document.getElementById('goals').appendChild(node);
+  store.dispatch(addTodoAction({
+    name,
+    complete: false,
+    id: generateId()
+  }));
 }
 ```
 
-Invoke these functions for each Todo or Goal item which reside in our store.
+This method will extract the information from the input field, reset the input field, and then dispatch an `addTodoAction` Action Creator with the text that the user typed into the input field.
 
-```js
-store.subscribe(() => {
-    const { goals, todos } = store.getState();
-    // reset the list by emptying them out 
-    document.getElementById('todos').innerHTML = '';
-    document.getElementById('goals').innerHTML = '';
-    // recreate the list with the items in the state
-    goals.forEach(addGoalToDom);
-    goals.foReach(addTodoToDom);
-})
-```
+So we're using the UI to change the state of our store, but these  changes are not reflecting the new state visually in the UI. Let's do  that, now.
 
-#### When we complete an item, cross it off	
 
-Add to the function **addToDom** an event listener to the newly created node that allows it to include a 'crossed off' style when clicked and checked off as 'complete'
 
-```js
-function addTodoToDOM(todo) {
-    const node = document.createElement('li');
-    const text = document.createTextNode(todo.name);
-    node.appendChild(text);
-    
-    // add a node style based on whether or not the dodo is complete
-    node.style.textDecoration = todo.complete ? 'line-through' : 'none';
-    
-    // add event listener to this new node
-    node.addEventListener('click', () => {
-       store.dispatch(toggleToDoAction(todo.id)); 
-    });
-    
-    document.getElementById('todos').appendChild(node);
-}
-```
+> ## Need to Level Up Your DOM Skills?
 
-#### Remove an Item
+> Both the content in the previous video, as well as the content in the following video depend on DOM-manipulation skills.
 
-Create a *helper* function to create a remove button.
+> - accessing elements with `document.getElementById()`
+> - adding listeners with `.addEventListener()`
+> - accessing the `.value` property on an element
+> - creating a new element with `.createElement()`
+> - adding new content with`.appendChild()`
+> - etc.
 
-```js
-function createRemoveButton(click) {
-    const removeBtn = document.createElement('button');
-    removeBtn.addEventListener('click', onClick);
-    return removeBtn;
-}
-```
+> If you need to brush up on these skills, check out our course [JavaScript and the DOM](https://www.udacity.com/course/javascript-and-the-dom--ud117).
 
-and then add to the **addTodoToDom** function
 
-```js
-function addTodoToDOM(todo) {
-    const node = document.createElement('li');
-    const text = document.createTextNode(todo.name);
-    // create the removeBtn passing it a function to be used when the button is clicked
-    const removeBtn = createRemoveButton(() => {
-        store.dispatch(removeTodoAction(todo.id));
-    });
-    
-    node.appendChild(text);
-    // also append the remove button
-    node.appendChild(removeBtn);
-    node.style.textDecoration = todo.complete ? 'line-through' : 'none';
-    node.addEventListener('click', () => {
-       store.dispatch(toggleToDoAction(todo.id)); 
-    });
-    
-    document.getElementById('todos').appendChild(node);
-}
-```
 
-#### Summary
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/p3PtYdpqSO0?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=103" id="widget104" width="640" height="360" frameborder="0"></iframe>
+
+
+
+##### Before we proceed, there's one more feature to our UI that still needs  displaying. When a todo is completed, we want a line to appear through  it. Try thinking through the steps that would be needed. Each todo item  will need to listen for a click and change the text to strikethrough.  Now, try writing the code to actually make it work!
+
+
+
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/pJ7wu1rU680?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=105" id="widget106" width="640" height="360" frameborder="0"></iframe>
+
+
+
+[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/4219bd4cc8649f9fa1db65b57eb332150ec10c3f)
+
+
+
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/aFYwjb2RSbE?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=107" id="widget108" width="640" height="360" frameborder="0"></iframe>
+
+
+
+[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/8b9fcbfa43d2fa8927e59fd2d0e61d6d0bb5737d)
+
+
+
+# Summary
 
 In this section, we connected our functioning state application with a front-end UI. We added some form fields and buttons to our UI that can  be used to add new Todo items and Goal items to the state. Updating the  state will *also* cause the entire application to re-render so  that the visual representation of the application matches that of the  info stored in the state object.
 

@@ -1,0 +1,15 @@
+# 6. Lesson Summary
+
+
+
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/62vf5k7CvCo?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=175" id="widget176" width="640" height="360" frameborder="0"></iframe>
+
+
+
+#### Lesson Challenge
+
+Read these articles: [Redux Thunk](https://blog.nojaf.com/2015/12/06/redux-thunk/), [Why do we need middleware for async flow in Redux?](https://stackoverflow.com/questions/34570758/why-do-we-need-middleware-for-async-flow-in-redux), and [Understanding how redux-thunk works](https://medium.com/@gethylgeorge/understanding-how-redux-thunk-works-72de3bdebc50). Answer the following questions and share your answers with your classmates:
+
+1) Why do we use middleware to perform asynchronous tasks in Redux apps?
+
+2) How do we use `redux-thunk` to make API requests in Redux apps?

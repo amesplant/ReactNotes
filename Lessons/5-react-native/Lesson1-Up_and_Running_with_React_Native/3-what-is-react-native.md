@@ -1,0 +1,32 @@
+# 3. What is React Native/Why does it exist?
+
+
+
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/ypo2B8DpmSc?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=283" id="widget284" width="640" height="360" frameborder="0"></iframe>
+
+
+
+## React Native under the Hood
+
+When React was first introduced, a big selling point was the [Virtual DOM](https://reactjs.org/docs/faq-internals.html). The idea is pretty standard in most UI libraries now, but when it first came out, it was groundbreaking! We can look at what exactly the  Virtual DOM is by breaking down the process of what happens when you  call `setState()`. 
+
+The first thing React does when `setState()` is called is merge the object passed to `setState()` into the current state of the component. This will kick off a process called [reconciliation](https://reactjs.org/docs/reconciliation.html). The end goal of reconciliation is to update the UI based on this new  state in the most efficient way possible. To do this, React will  construct a new tree of React elements (which you can think of as an  object representation of your UI). Once it has this new tree, React will "diff" it against the previous element tree in order to figure out how  the UI should change in response to the new state. By doing this, React  will then know the exact changes which occurred, and by knowing exactly  what changes occurred, it will able to minimize its footprint on the UI  by only making updates where absolutely necessary. 
+
+This process of creating an object representation of the DOM is the  whole idea behind the "Virtual DOM". Now, what if instead of targeting  and rendering to the DOM, we need to target and render to another  platform -- say iOS or Android. Theoretically, the DOM is just an  implementation detail. Besides the name itself (which, in my opinion,  was more of a marketing ploy than anything), there's nothing that  couples the idea of the Virtual DOM to the actual DOM. This is the exact idea behind React Native. Instead of rendering to the web's DOM, React  Native renders to native iOS or Android views. This allows us to build  native iOS and Android applications just by using React Native.
+
+
+
+### Quiz Question
+
+![image-20200510114538267](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson1-Up_and_Running_with_React_Native\images\3-quiz-1)
+
+> React Native offers us a way to build mobile applications using the same React (i.e. *JavaScript*) principles that we already know! We're not seeing just a web app  embedded inside a mobile app; the output is an actual native iOS or  Android app!
+
+## Summary
+
+React Native's "learn once, write anywhere" approach allows us to use the same principles that we know to develop for both web *and* native platforms. After all, under the hood, many of the same  principles of the Virtual DOM, reconciliation, and diffing algorithm  apply whether it's a web application built with React or a mobile  application built with React Native. 
+
+### Further Research
+
+- [Bridging in React Native](https://tadeuzagallo.com/blog/react-native-bridge/)
+- [12 Common Questions from Working with React Native](https://medium.com/dailyjs/12-common-questions-about-react-native-74fc9ba49b17)

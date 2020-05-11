@@ -1,187 +1,42 @@
 ## 2. UI
 
-Start adding some UI to out application. So transferring the index.js into an HTML page:
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/8IkNVrCqtvo?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=97" id="widget98" width="640" height="360" frameborder="0"></iframe>
 
-**index.html**
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Udacity Todos Goals</title>
-</head>
-<body>
 
-  <script type='text/javascript'>
-    // Library Code
-    function createStore (reducer) {
-      // The store should have four parts
-      // 1. The state
-      // 2. Get the state.
-      // 3. Listen to changes on the state.
-      // 4. Update the state
+[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/3cb66af8ea36d4be3e80037ad76cef0ed58d24c8)
 
-      let state
-      let listeners = []
 
-      const getState = () => state
 
-      const subscribe = (listener) => {
-        listeners.push(listener)
-        return () => {
-          listeners = listeners.filter((l) => l !== listener)
-        }
-      }
+# What We're Going to Build
 
-      const dispatch = (action) => {
-        state = reducer(state, action)
-        listeners.forEach((listener) => listener())
-      }
+Now that we have an `index.html` file and all of the  JavaScript code has been transferred over to script tags, let's start  adding in a User Interface. Since our project has two pieces of state,  we'll need two areas:
 
-      return {
-        getState,
-        subscribe,
-        dispatch,
-      }
-    }
+1. Todo list area
+2. Goals area 
 
-    // App Code
-    const ADD_TODO = 'ADD_TODO'
-    const REMOVE_TODO = 'REMOVE_TODO'
-    const TOGGLE_TODO = 'TOGGLE_TODO'
-    const ADD_GOAL = 'ADD_GOAL'
-    const REMOVE_GOAL = 'REMOVE_GOAL'
 
-    function addTodoAction (todo) {
-      return {
-        type: ADD_TODO,
-        todo,
-      }
-    }
 
-    function removeTodoAction (id) {
-      return {
-        type: REMOVE_TODO,
-        id,
-      }
-    }
+[![Screenshot of the Todo List app.](https://video.udacity-data.com/topher/2018/March/5abbeeea_nd019-redux-l2-basic-ui/nd019-redux-l2-basic-ui.jpg)This  is what our UI should look like when we're finished: a Todo List area  with an input to add a new Todo item, and a Goals area with an input to  add a new Goal. ](https://classroom.udacity.com/nanodegrees/nd019/parts/7dab5516-d1ae-45d3-b8f8-d782b5534caf/modules/221d27be-a830-49a3-9803-9aa4a114489c/lessons/9f490b7a-d61c-4b1e-b399-3451d6525ec1/concepts/11c90108-847f-4763-8c0a-3bd2009246ae#)
 
-    function toggleTodoAction (id) {
-      return {
-        type: TOGGLE_TODO,
-        id,
-      }
-    }
 
-    function addGoalAction (goal) {
-      return {
-        type: ADD_GOAL,
-        goal,
-      }
-    }
 
-    function removeGoalAction (id) {
-      return {
-        type: REMOVE_GOAL,
-        id,
-      }
-    }
+So this is what we're going for. It's not the best looking website ever  created, but this isn't a course on CSS ;-). If you want to make it  stunningly beautiful, feel free to add some CSS to your project 👍🏼
 
-    function todos (state = [], action) {
-      switch(action.type) {
-        case ADD_TODO :
-          return state.concat([action.todo])
-        case REMOVE_TODO :
-          return state.filter((todo) => todo.id !== action.id)
-        case TOGGLE_TODO :
-          return state.map((todo) => todo.id !== action.id ? todo :
-            Object.assign({}, todo, { complete: !todo.complete }))
-        default :
-          return state
-      }
-    }
+We already have the Redux portion of our application working, but so  far, we've just been manually running snippets of code to interact with  the Redux Store. Let's create the UI above so that we can interact with  the store using the browser.
 
-    function goals (state = [], action) {
-      switch(action.type) {
-        case ADD_GOAL :
-          return state.concat([action.goal])
-        case REMOVE_GOAL :
-          return state.filter((goal) => goal.id !== action.id)
-        default :
-          return state
-      }
-    }
 
-    function app (state = {}, action) {
-      return {
-        todos: todos(state.todos, action),
-        goals: goals(state.goals, action),
-      }
-    }
 
-    const store = createStore(app)
+<iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/0M2gm4-IbGs?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=99" id="widget100" width="640" height="360" frameborder="0"></iframe>
 
-    store.subscribe(() => {
-      console.log('The new state is: ', store.getState())
-    })
 
-    store.dispatch(addTodoAction({
-      id: 0,
-      name: 'Walk the dog',
-      complete: false,
-    }))
 
-    store.dispatch(addTodoAction({
-      id: 1,
-      name: 'Wash the car',
-      complete: false,
-    }))
+[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/c800637efb41fee3f4ea2a9392eb7a3025aac69f)
 
-    store.dispatch(addTodoAction({
-      id: 2,
-      name: 'Go to the gym',
-      complete: true,
-    }))
 
-    store.dispatch(removeTodoAction(1))
 
-    store.dispatch(toggleTodoAction(0))
+# Summary
 
-    store.dispatch(addGoalAction({
-      id: 0,
-      name: 'Learn Redux'
-    }))
+In this section, we added some minimal UI to our application. The actually state of our app hasn't changed at all, though.
 
-    store.dispatch(addGoalAction({
-      id: 1,
-      name: 'Lose 20 pounds'
-    }))
-
-    store.dispatch(removeGoalAction(0))
-  </script>
-</body>
-</html>
-```
-
-Add in the HTML to show two different sections:
-
-1. Todo List
-2. Goals List
-
-Within the <body> tags and before the <script> tags
-
-```html
-<div>
-    <h1>Todo List</h1>
-    <input id='todo' type='text' placeholder='Add Todo' />
-    <button id='todoBtn'>Add Todo</button>
-    <ul id='todos'></ul>
-  </div>
-  <div>
-    <h1>Goals</h1>
-    <input id='goal' type='text' placeholder='Add Goal' />
-    <button id='goalBtn'>Add Goal</button>
-    <ul id='goals'></ul>
-  </div>
-```
-
+In the next section, we'll hook up our shiny new UI to our state so  that entering content via the UI will update the application's state.

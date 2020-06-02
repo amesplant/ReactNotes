@@ -514,7 +514,13 @@ Consider the following CSS:
 
 How should we expect items nested in this parent container to render? Please check all that apply.
 
-- 
+
+
+![image-20200517092008152](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson3-Styling_and_Layout\images\3-quiz)
+
+
+
+> With flexbox, we have full control over layout, especially with varying screen sizes.
 
 ## Summary
 

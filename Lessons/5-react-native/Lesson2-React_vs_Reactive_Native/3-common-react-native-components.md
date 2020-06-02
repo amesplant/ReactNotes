@@ -108,6 +108,10 @@ React Native offers a number of components to handle "tapping gestures," or what
 
 [Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/fea2dbb62ef103ed0a44307dd7922bdfcab83ef2)
 
+![image-20200516165912992](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson2-React_vs_Reactive_Native\images\3-quiz-1)
+
+> Both Buttons and Touchables allow us to handle some tapping gestures in  our apps. Buttons render nicely out-of-the-box, but feel free to  incorporate components such as `TouchableHighlight` or `TouchableOpacity` to provide more nuanced feedback for your users.
+
 
 
 <iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/eLrjkwYIB0g?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=321" id="widget322" width="640" height="360" frameborder="0"></iframe>
@@ -166,7 +170,9 @@ React Native comes with a few ways to render lists. You'll probably run into `Sc
 
 > What if you wanted to add section headers to a list? `FlatList` doesn’t quite support these, but React Native offers another list  component that renders these headers nicely. Feel free to check out [SectionList](https://facebook.github.io/react-native/docs/sectionlist.html) in the React Native documentation for a closer look
 
-### 
+![image-20200516192302031](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson2-React_vs_Reactive_Native\images\3-quiz-2)
+
+> Fantastic! You have many choices for rendering lists in React Native, so feel free to choose the one best suited for your application.
 
 ## Forms
 
@@ -190,6 +196,14 @@ React Native provides a few basic components to use in your  application's forms
 > In the above video, `App` renders a `TextInput` component with an `onChange` prop. With the way that the event handler, `handleTextChange()`, is implemented, the prop should be `onChangeText`. 
 
 > While both methods are invoked on value change, `onChangeText` passes the actual value (text) as the argument. On the other hand, `onChange` passes the entire event object as an argument. Both are perfectly valid props, but the logic of your event handler will need to be tailored to  the prop chosen. For more info, check out [this post](https://stackoverflow.com/questions/44416541/react-native-difference-between-onchange-vs-onchangetext-of-textinput) on Stack Overflow.
+
+
+
+![image-20200516192913265](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson2-React_vs_Reactive_Native\images\3-quiz-3)
+
+
+
+> `KeyboardAvoidingView` solves the problem of views that would otherwise block the way of a virtual keyboard.
 
 
 

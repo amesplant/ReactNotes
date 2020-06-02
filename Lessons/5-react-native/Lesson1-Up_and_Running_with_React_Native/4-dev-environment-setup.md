@@ -73,7 +73,8 @@ We'll soon learn how to install the iOS and Android simulators. If you're  plann
 
 #### The set up for the Android simulator can be quite complicated. Moreover,  Expo can be unreliable at times. Don't get discouraged! Try using an [Expo Snack](https://snack.expo.io)🍎 to build the class project and the course project if you're having trouble setting up your local environment.
 
-
+> Using Create React Native App with Expo is a great way to get up and running quickly!
+>
 
 ## Simulators 📱
 

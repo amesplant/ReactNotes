@@ -37,23 +37,9 @@ Let's go ahead and add this to our app!
 
 <iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/4rcPX-bIneE?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=443" id="widget444" width="640" height="360" frameborder="0"></iframe>
 
+![image-20200519143042714](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson5-Native_Features\images\6-quiz)
 
-
-[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/ca00e023b9c01139efdfb54d7dfa9e18c75b4297)
-
-
-
-##### This is the final check-in!
-
-Task List
-
-- 
-
-### Quiz Question
-
-Which file do you need to change in order to configure your application for the app store?
-
-- 
+> Good work! When you create an app with `create-react-native-app` you'll automatically have an app.json file created for you, which will contain all of the configuration settings for your app.
 
 ## What are .apk and .ipa Files?
 

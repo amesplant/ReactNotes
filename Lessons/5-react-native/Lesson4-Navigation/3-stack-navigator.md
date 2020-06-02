@@ -4,6 +4,16 @@
 
 <iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/uMbBR5nu3eg?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=395" id="widget396" width="640" height="360" frameborder="0"></iframe>
 
+## Stack Navigator v5
+
+> https://reactnavigation.org/
+>
+> This course introduces you to v1 and v2, which are really old by now!
+
+
+
+
+
 
 
 ## Stack Navigator v1
@@ -92,11 +102,9 @@ export default class App extends React.Component {
 
 
 
-### Quiz Question
+![image-20200519135724578](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson4-Navigation\images\3-quiz)
 
-What is true about the Stack Navigator? Please select all that apply:
-
-- 
+> The Stack Navigator keeps things simple, but is incredibly powerful. We  simply define all screens within an object, pass it into `createStackNavigator`, and it returns a component we can render!
 
 <iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/JosvkjGlt30?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=399" id="widget400" width="640" height="360" frameborder="0"></iframe>
 

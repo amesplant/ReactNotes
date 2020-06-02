@@ -22,7 +22,10 @@ Navigation *between* screens feels distinct between Android and iOS as well. And
 
 One more key difference between Android and iOS involves tab navigation. iOS apps include [tab bars](https://developer.apple.com/ios/human-interface-guidelines/bars/tab-bars/) at the bottom of the app's screen, allowing for convenient access to  different portions of the app. Likewise, Android apps include them as  well; however tabs are distinctly located [at the top of the screen](https://material.io/guidelines/components/tabs.html). Both allow access to high-level content, and we'll explore React Native's **TabNavigator** in closer detail in Lesson 4.
 
+![image-20200516094244593](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson2-React_vs_Reactive_Native\2-quiz.png)
 
+> While both web and native applications have their own distinctions, iOS  and Android have their own distinct qualities that characterize their  trademark "look and feel" as well.
+>
 
 ## Summary
 

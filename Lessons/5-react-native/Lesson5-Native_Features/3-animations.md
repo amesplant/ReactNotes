@@ -28,19 +28,9 @@ Let's take a look at some of these in action!
 
 > The goal of having animations is to add to the user's experience, not distract from it. By keeping this in mind whenever you're adding  animations to your app, not only will your app perform better -- you'll  also minimize the risk of ruining your user's experience with  unnecessary animations.
 
+![image-20200519145403177](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson5-Native_Features\images\3-quiz)
 
-
-### Quiz Question
-
-Animated comes with three built in animation configurations. Please select all that apply: 
-
-- 
-
-##### Time for a *quick* check-in!
-
-Task List
-
-- 
+> Animated provides three types of animation configurations: `timing`, `spring`, and `decay`.
 
 ## Summary
 

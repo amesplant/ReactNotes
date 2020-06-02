@@ -59,13 +59,11 @@ padding: 0;
 min-width: 0;
 ```
 
+![image-20200517092439020](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson3-Styling_and_Layout\images\4-quiz)
+
+> While lots of the same philosophies of flexbox apply to both web and  React Native apps, there are some distinct differences with how React  Native implements flexbox.
 
 
-### Quiz Question
-
-How does React Native's implementation of CSS flexbox differ from that on the web? Select all that apply:
-
-- 
 
 <iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/6ZgAFY6Lakg?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=361" id="widget362" width="640" height="360" frameborder="0"></iframe>
 
@@ -104,30 +102,6 @@ React Native gives us a convenient way to organize and separate code through the
 
 
 <iframe allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" src="https://www.youtube.com/embed/nm8mq8__U8Q?showinfo=0&amp;rel=0&amp;autohide=1&amp;vq=hd720&amp;hl=en-us&amp;cc_load_policy=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fclassroom.udacity.com&amp;widgetid=369" id="widget370" width="640" height="360" frameborder="0"></iframe>
-
-
-
-[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/93add38d61a4891ae40f8c295fda079f7c1cc5d6)
-
-
-
-##### That was a lot of styling! Let's recap what we've done up to this point.
-
-Task List
-
-- 
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

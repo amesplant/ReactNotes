@@ -132,7 +132,9 @@ Another benefit is that `StyleSheet` validates the content within the style obje
 >
 > Styling in React is going through a renaissance period right now just as Flux did a few years ago (which eventually gave us Redux). There are many different styling libraries popping up and each has different  tradeoffs. Two of the most popular are [Glamorous](https://github.com/robinpowered/glamorous-native) and [Styled Components](https://github.com/styled-components/styled-components). The whole idea behind both of these libraries is that styling is a  primary concern of the component, and therefore styling should be  coupled with the component itself. We'll take a look at using Styled  Component with React Native a little bit later.
 
+![image-20200517091345328](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson3-Styling_and_Layout\images\2-quiz)
 
+> Styling in React Native allows us to use the same JavaScript that we're used to! How's that for "learn once, write anywhere?"
 
 ## Summary
 

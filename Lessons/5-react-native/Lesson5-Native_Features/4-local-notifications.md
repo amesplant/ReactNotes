@@ -46,25 +46,10 @@ But since we're not incorporating an external server, and all the  logic about w
 
 
 
-### Quiz Question
+![image-20200519144118006](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson5-Native_Features\images\4-quiz)
 
-What's the API for scheduling future local notifications with Expo?
-
-- 
-
-##### Almost there! How did local notifications go?
-
-Task List
-
-- 
-
-
-
-
-
-
-
-
+> Nice! To schedule a local notification to be shown in the future you use Expo's `Notifications.scheduleLocalNotificationAsync` method.
+>
 
 ## Summary
 

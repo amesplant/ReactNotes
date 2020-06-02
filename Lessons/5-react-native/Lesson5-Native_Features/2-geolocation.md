@@ -79,23 +79,9 @@ import { calculateDirection } from '../utils/helpers';
 
 **Note**: If you are running into errors with the code in this commit, update the initial value of the `Live`'s state's `coords` property to a non-`null` value.
 
+![image-20200523095314348](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson5-Native_Features\images\2-quiz)
 
-
-### Quiz Question
-
-Which of the following methods would you use to subscribe to the user's location using Expo? Select all that apply.
-
-- 
-
-##### As we wrap up adding geolocation to the application, how are things looking on your end?
-
-Task List
-
-- 
-
-
-
-
+> To subscribe to a user's location, you use Expo's `Location.watchPositionAsync` method passing it two arguments: an options object, and a callback to be called whenever the location changes.
 
 ## Summary
 

@@ -92,13 +92,11 @@ export default class App extends React.Component {
 
 [Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/9ff26370e4e5593195fdcad4d85e74f540a39220)
 
+![image-20200519134610137](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson4-Navigation\images\2-quiz)
+
+> The Tab Navigator is just one of React Navigation's three basic  customizable navigators. We'll take a look at the other two later in  this Lesson!
 
 
-### Quiz Question
-
-What is true about the Tab Navigator? Please select all that apply:
-
-- 
 
 ## StatusBar
 

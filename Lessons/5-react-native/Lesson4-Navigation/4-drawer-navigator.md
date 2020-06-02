@@ -74,31 +74,14 @@ According to the documentation:
 
 > [Rather than opening a drawer with `navigation.navigate(‘DrawerOpen’)`, you can now call `navigation.openDrawer()`. Other methods are `closeDrawer()` and `toggleDrawer()`.](https://reactnavigation.org/blog/)
 
+![image-20200519141757948](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson4-Navigation\images\4-quiz-1)
+
+> Many native applications include a drawer menu to help users navigate  through the app. The Drawer Navigator offers us a simple but powerful  way to implement that in React Native apps!
+>
+
+### ![image-20200519141954077](C:\Repos\React Apps (Udacity)\ReactNotes\Lessons\5-react-native\Lesson4-Navigation\images\4-quiz-2)
 
 
-### Question 1 of 2
-
-What is true about the Drawer Navigator? Please select all that apply:
-
-- 
-
-### Question 2 of 2
-
-Time for a quick review! Please match the navigator with how it manages screens:
-
-Tab Navigator
-
-Stack Navigator
-
-Drawer Navigator
-
-Stack Navigator
-
-Tab Navigator
-
-Drawer Navigator
-
-### Description
 
 ### Component
 
